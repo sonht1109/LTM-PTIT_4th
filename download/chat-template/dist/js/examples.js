@@ -1,10 +1,35 @@
-$(function () {
-  /**
-   * Some examples of how to use features.
-   *
-   **/
+const messageTemplate = (message, type) => {
+  return (
+    `<div class="message-item ` +
+    type +
+    `">
+            <div class="message-avatar">
+                <figure class="avatar">
+                    <img src="./dist/media/img/` +
+    (type === "outgoing-message" ? "women_avatar5.jpg" : "man_avatar3.jpg") +
+    `" class="rounded-circle">
+                </figure>
+                <div>
+                    <h5>` +
+    (type === "outgoing-message" ? "Mirabelle Tow" : "Byrom Guittet") +
+    `</h5>
+                    <div class="time">14:50 PM ` +
+    (type == "outgoing-message" ? '<i class="ti-check"></i>' : "") +
+    `</div>
+                </div>
+            </div>
+            <div class="message-content">
+                ` +
+    message +
+    `
+            </div>
+        </div>`
+  );
+};
 
-  var SohoExamle = {
+$(function () {
+
+  var features = {
     Message: {
       add: function (message, type) {
         var chat_body = $(".layout .content .chat .chat-body");
@@ -12,33 +37,8 @@ $(function () {
           type = type ? type : "";
           message = message ? message : "I did not understand what you said!";
 
-          $(".layout .content .chat .chat-body .messages").append(
-            `<div class="message-item ` +
-              type +
-              `">
-                        <div class="message-avatar">
-                            <figure class="avatar">
-                                <img src="./dist/media/img/` +
-              (type == "outgoing-message"
-                ? "women_avatar5.jpg"
-                : "man_avatar3.jpg") +
-              `" class="rounded-circle">
-                            </figure>
-                            <div>
-                                <h5>` +
-              (type == "outgoing-message" ? "Mirabelle Tow" : "Byrom Guittet") +
-              `</h5>
-                                <div class="time">14:50 PM ` +
-              (type == "outgoing-message" ? '<i class="ti-check"></i>' : "") +
-              `</div>
-                            </div>
-                        </div>
-                        <div class="message-content">
-                            ` +
-              message +
-              `
-                        </div>
-                    </div>`
+          $(".layout .content .chat .chat-body .messages").prepend(
+            messageTemplate(message, type)
           );
 
           setTimeout(function () {
@@ -60,7 +60,7 @@ $(function () {
     // $('#disconnected').modal('show');
     // $('#call').modal('show');
     // $('#videoCall').modal('show');
-    $("#pageTour").modal("show");
+    // $("#pageTour").modal("show");
   }, 1000);
 
   $(document).on(
@@ -75,11 +75,11 @@ $(function () {
       message = $.trim(message);
 
       if (message) {
-        SohoExamle.Message.add(message, "outgoing-message");
+        features.Message.add(message, "outgoing-message");
         input.val("");
 
         setTimeout(function () {
-          SohoExamle.Message.add();
+          features.Message.add();
         }, 1000);
       } else {
         input.focus();
