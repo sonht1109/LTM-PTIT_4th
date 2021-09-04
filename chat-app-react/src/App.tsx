@@ -1,31 +1,25 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
-import 'antd/dist/antd.css'; 
-import { DatePicker } from 'antd';
-import {FaAccusoft} from "react-icons/fa"; 
-// 2.9k
-function App() {
+import React from "react";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import Chat from "./containers/Chat";
+import Login from "./containers/Login";
+import Signup from "./containers/Signup";
+import './app.css'
+import 'antd/dist/antd.css';
+
+export default function App() {
   return (
-    <div className="App">
-      <DatePicker/>
-      <FaAccusoft/>
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <Switch>
+        <Route path="/" exact>
+          <Chat />
+        </Route>
+        <Route path="/signup" exact>
+          <Signup />
+        </Route>
+        <Route path="/login" exact>
+          <Login />
+        </Route>
+      </Switch>
+    </Router>
   );
 }
-
-export default App;
