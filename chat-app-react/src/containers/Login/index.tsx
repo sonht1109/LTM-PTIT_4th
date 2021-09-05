@@ -1,9 +1,10 @@
 import React from "react";
 import { SLogin } from "./styles";
-import { FaPaperPlane } from "react-icons/fa";
+import { FaRocket } from "react-icons/fa";
 import { Button, Divider, Form, Input } from "antd";
 import Title from "antd/lib/typography/Title";
 import { Link } from "react-router-dom";
+import { SLogo } from "../Signup/styles";
 
 export default function Login() {
   const onFinish = (values: any) => {
@@ -17,11 +18,12 @@ export default function Login() {
   return (
     <SLogin>
       <div className="wrapper">
-        <FaPaperPlane
-          size={30}
-          style={{ marginBottom: "25px" }}
-          color="#1890ff"
-        />
+        <SLogo>
+          <FaRocket
+            size={25}
+            color="white"
+          />
+        </SLogo>
         <Title level={4}>Login</Title>
         <Form
           name="basic"
@@ -55,7 +57,9 @@ export default function Login() {
             </Button>
           </Form.Item>
 
-          <Divider plain>or <Link to="/signup">Register</Link></Divider>
+          <Divider plain>
+            or <Link to="/signup">Register</Link>
+          </Divider>
         </Form>
       </div>
     </SLogin>

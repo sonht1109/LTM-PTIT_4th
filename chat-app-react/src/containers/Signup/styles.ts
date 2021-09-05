@@ -19,7 +19,7 @@ export const SSignup = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    background-color: rgba(255, 255, 255, 0.5);
+    background-color: rgba(255, 255, 255, 0.7);
     padding: 40px;
     border-radius: 8px;
     border: 1px solid #e6e6e5;
@@ -28,3 +28,15 @@ export const SSignup = styled.div`
     }
   }
 `;
+
+export const SLogo = styled.div`
+  width: 45px;
+  height: 45px;
+  min-width: 45px;
+  border-radius: 50%;
+  background-color: #1890ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+`
