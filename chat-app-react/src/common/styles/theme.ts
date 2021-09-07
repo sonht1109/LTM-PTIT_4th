@@ -7,7 +7,7 @@ const theme = {
         send: "#1890ff",
         receive: "#ebebeb",
       },
-      hover: "#e6e6e6",
+      hover: "#f2f0f0",
       icon: "#e6e6e6",
     },
     text: {
@@ -22,20 +22,20 @@ const theme = {
     border: "#ced4da",
     badge: "#fd397a",
     icon: {
-      inactive: "black",
+      inactive: "#37474f",
       active: "#1890ff",
     },
   },
   dark: {
     logo: "#1890ff",
     bg: {
-      main: "#1a2236",
+      main: "#263238",
       message: {
         send: "#1890ff",
         receive: "#293145",
       },
       input: "#1a2236",
-      hover: "#293145",
+      hover: "#4b505c",
       icon: "#1890ff",
     },
     text: {
@@ -44,10 +44,10 @@ const theme = {
         receive: "black",
       },
       input: "#495057",
-      main: "black",
+      main: "#d3d4d5",
       sub: "#828282",
     },
-    border: "#293145",
+    border: "#37474f",
     badge: "#fd397a",
     icon: {
       inactive: "rgba(255, 255, 255, 0.7)",
