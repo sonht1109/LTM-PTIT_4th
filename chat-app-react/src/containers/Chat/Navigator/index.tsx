@@ -1,4 +1,5 @@
-import { Tooltip } from "antd";
+import { Dropdown, Menu, Tooltip } from "antd";
+import Avatar from "antd/lib/avatar/avatar";
 import { useContext } from "react";
 import {
   FaRegCommentAlt,
@@ -6,9 +7,11 @@ import {
   FaRegUser,
   FaRocket,
 } from "react-icons/fa";
+import { Link } from "react-router-dom";
 import { NavigatorContext } from "src/common/context/NavigatorContext";
 import { ETheme } from "src/common/context/ThemeContext";
 import { ThemeContext } from "styled-components";
+import { menu } from "./store/data";
 import { SNavigator, SHandleButton } from "./styles";
 
 export default function Navigator() {
@@ -22,7 +25,6 @@ export default function Navigator() {
         <FaRocket size={30} color={theme.logo} />
       </div>
       <div className="list">
-
         {/* messages */}
         <Tooltip placement="right" title="Messages">
           <SHandleButton active={index === 0} onClick={() => setIndex(0)}>
@@ -42,21 +44,53 @@ export default function Navigator() {
             />
           </SHandleButton>
         </Tooltip>
-
       </div>
 
       {/* theme */}
       <Tooltip placement="right" title="Toggle theme">
-        <SHandleButton
-          active={themeType === ETheme["DARK"]}
-          onClick={setTheme}
-        >
+        <SHandleButton active={themeType === ETheme["DARK"]} onClick={setTheme}>
           <FaRegMoon
             size={16}
-            color={themeType === ETheme["DARK"] ? theme.icon.active : theme.icon.inactive}
+            color={
+              themeType === ETheme["DARK"]
+                ? theme.icon.active
+                : theme.icon.inactive
+            }
           />
         </SHandleButton>
       </Tooltip>
+
+      <Dropdown
+        placement="topRight"
+        overlay={overlay(theme)}
+        trigger={["click"]}
+      >
+        <Avatar
+          style={{ cursor: "pointer", marginTop: "15px" }}
+          size={40}
+          src="/images/avt-placeholder.png"
+        />
+      </Dropdown>
     </SNavigator>
   );
 }
+
+const overlay = (theme: any) => {
+  return (
+    <Menu>
+      {menu.map((m: any, i: number) => (
+        <Menu.Item className="dropdown_item" key={i} onClick={m?.callback}>
+          {m?.href ? <Link to={m.href}>{m.title}</Link> : m?.title}
+        </Menu.Item>
+      ))}
+      <Menu.Divider />
+      <Menu.Item
+        style={{ color: theme.badge }}
+        className="dropdown_item logout"
+        key={menu.length}
+      >
+        Log out
+      </Menu.Item>
+    </Menu>
+  );
+};

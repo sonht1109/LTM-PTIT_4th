@@ -17,7 +17,7 @@ export default function FriendItem() {
             <FaRegCommentAlt size={12} color={theme.icon.inactive} />
           </div>
           <div className="icon">
-            <FaBan size={12} color={theme.icon.inactive} />
+            <FaBan size={12} color={theme.badge} />
           </div>
         </div>
       </div>

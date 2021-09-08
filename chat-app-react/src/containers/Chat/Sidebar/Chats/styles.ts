@@ -1,4 +1,3 @@
-import { mixinsScrollBar } from "src/common/styles/mixins";
 import styled from "styled-components";
 
 export const SInnerSidebar = styled.div`

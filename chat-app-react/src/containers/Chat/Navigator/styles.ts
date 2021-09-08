@@ -2,16 +2,14 @@ import styled, { css } from "styled-components";
 
 export const SNavigator = styled.div`
   color: ${(props) => props.theme.theme.logo};
-  position: fixed;
   display: flex;
   flex-direction: column;
   align-items: center;
-  left: 0;
-  top: 0;
-  bottom: 0;
   width: 80px;
   border-right: ${(props) => `1px solid ${props.theme.theme.border}`};
   padding: 15px;
+  min-height: 500px;
+  overflow: auto;
   /* background-image: url('/images/chat-bg.png'); */
   .logo {
     margin-bottom: 20px;
@@ -19,6 +17,7 @@ export const SNavigator = styled.div`
   .list {
     flex-grow: 1;
   }
+
 `;
 
 export const SHandleButton = styled.div<{ active: boolean }>`

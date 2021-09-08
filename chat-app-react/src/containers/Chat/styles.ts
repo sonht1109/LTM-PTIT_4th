@@ -4,6 +4,6 @@ export const SChat = styled.div`
   width: 100vw;
   height: 100vh;
   background-color: ${props => props.theme.theme.bg.main};
-  padding-left: 80px;
   display: flex;
+  min-height: 500px;
 `

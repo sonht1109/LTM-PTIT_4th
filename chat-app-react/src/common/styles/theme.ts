@@ -1,9 +1,11 @@
 const theme = {
   light: {
     logo: "#1890ff",
+    green: "#20c997",
     bg: {
       main: "white",
       sub: "rgba(0,123,255,.05)",
+      dropdown: 'white',
       message: {
         send: "#1890ff",
         receive: "#ebebeb",
@@ -29,9 +31,11 @@ const theme = {
   },
   dark: {
     logo: "#1890ff",
+    green: "#20c997",
     bg: {
       main: "#263238",
       sub: "rgba(0,123,255,.05)",
+      dropdown: '#455a64',
       message: {
         send: "#1890ff",
         receive: "#293145",

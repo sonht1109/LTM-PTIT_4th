@@ -1,18 +1,17 @@
 import React from "react";
-import { useRouteMatch } from "react-router";
+import { Route, Switch } from "react-router";
+import MainChatContainer from "./MainChatContainer";
 import NoChatSelected from "./NoChatSelected";
-import { SChatContainer } from "./styles";
 
 export default function ChatContainer() {
-  const router = useRouteMatch() as any;
-  if (!router.params?.id) {
-    return <NoChatSelected />
-  }
-
-  return <MainChatContainer id={router.params.id} />;
+  return (
+    <Switch>
+      <Route path='/c' exact>
+        <NoChatSelected />
+      </Route>
+      <Route path='/c/:id' exact>
+        <MainChatContainer />
+      </Route>
+    </Switch>
+  )
 }
-
-const MainChatContainer = ({ id } : {id: number}) => {
-  return <SChatContainer>
-  </SChatContainer>;
-};
