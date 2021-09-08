@@ -32,8 +32,7 @@ export const SSignup = styled.div`
 export const SLogo = styled.div`
   width: 45px;
   height: 45px;
-  min-width: 45px;
-  border-radius: 50%;
+  border-radius: 8px;
   background-color: #1890ff;
   display: flex;
   justify-content: center;

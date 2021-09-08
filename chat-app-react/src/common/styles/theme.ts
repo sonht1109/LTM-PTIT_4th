@@ -3,6 +3,7 @@ const theme = {
     logo: "#1890ff",
     bg: {
       main: "white",
+      sub: "rgba(0,123,255,.05)",
       message: {
         send: "#1890ff",
         receive: "#ebebeb",
@@ -20,7 +21,7 @@ const theme = {
       sub: "#828282",
     },
     border: "#ced4da",
-    badge: "#fd397a",
+    badge: "#e91e63",
     icon: {
       inactive: "#37474f",
       active: "#1890ff",
@@ -30,6 +31,7 @@ const theme = {
     logo: "#1890ff",
     bg: {
       main: "#263238",
+      sub: "rgba(0,123,255,.05)",
       message: {
         send: "#1890ff",
         receive: "#293145",
@@ -48,7 +50,7 @@ const theme = {
       sub: "#828282",
     },
     border: "#37474f",
-    badge: "#fd397a",
+    badge: "#e91e63",
     icon: {
       inactive: "rgba(255, 255, 255, 0.7)",
       active: "rgba(255, 255, 255, 0.7)",

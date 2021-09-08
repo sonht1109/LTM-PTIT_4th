@@ -14,6 +14,5 @@ export default function ChatContainer() {
 
 const MainChatContainer = ({ id } : {id: number}) => {
   return <SChatContainer>
-    {id}
   </SChatContainer>;
 };

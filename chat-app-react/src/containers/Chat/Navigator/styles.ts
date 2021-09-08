@@ -12,6 +12,7 @@ export const SNavigator = styled.div`
   width: 80px;
   border-right: ${(props) => `1px solid ${props.theme.theme.border}`};
   padding: 15px;
+  /* background-image: url('/images/chat-bg.png'); */
   .logo {
     margin-bottom: 20px;
   }

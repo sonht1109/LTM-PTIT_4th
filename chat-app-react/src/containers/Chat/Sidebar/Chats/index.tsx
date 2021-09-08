@@ -1,8 +1,9 @@
-import { Tooltip, Input } from "antd";
+import { Input } from "antd";
 import React, { useContext } from "react";
 import { FaPlusCircle, FaUsers } from "react-icons/fa";
 import IconButton from "src/common/components/IconButton";
 import { ThemeContext } from "styled-components";
+import ChatList from "./List";
 import { SInnerSidebar } from "./styles";
 
 export default function Chats() {
@@ -17,27 +18,24 @@ export default function Chats() {
         <h3 className="header">Chats</h3>
 
         <div className="icons">
-          <Tooltip placement="bottom" title="Start a new chat">
-            <IconButton>
-              <FaPlusCircle color={theme.icon.inactive} size={16} />
-            </IconButton>
-          </Tooltip>
+          <IconButton tooltipTitle="Start a new chat" tooltipPosition="bottom">
+            <FaPlusCircle color={theme.icon.inactive} size={16} />
+          </IconButton>
 
-          <Tooltip placement="bottom" title="Create a new group chat">
-            <IconButton>
-              <FaUsers color={theme.icon.inactive} size={16} />
-            </IconButton>
-          </Tooltip>
+          <IconButton
+            tooltipPosition="bottom"
+            tooltipTitle="Create a new group chat"
+          >
+            <FaUsers color={theme.icon.inactive} size={16} />
+          </IconButton>
         </div>
       </div>
 
       <div className="search">
-        <Input.Search
-          placeholder="Chat's name .."
-          onSearch={onSearch}
-          enterButton
-        />
+        <Input.Search placeholder="Search" onSearch={onSearch} enterButton />
       </div>
+
+      <ChatList />
     </SInnerSidebar>
   );
 }

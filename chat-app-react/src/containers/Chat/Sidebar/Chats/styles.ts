@@ -1,12 +1,17 @@
+import { mixinsScrollBar } from "src/common/styles/mixins";
 import styled from "styled-components";
 
 export const SInnerSidebar = styled.div`
+  display: flex;
+  flex-direction: column;
+  max-height: 100%;
+
   .top {
     padding: 15px;
     display: flex;
     align-items: center;
     .header {
-      color: ${props => props.theme.theme.text.main};
+      color: ${(props) => props.theme.theme.text.main};
       font-size: 20px;
       line-height: 24px;
       font-weight: 600;
@@ -26,9 +31,9 @@ export const SInnerSidebar = styled.div`
       border-radius: 4px;
       .ant-input {
         background-color: transparent;
-        border-color: ${props => props.theme.theme.border};
-        color: ${props => props.theme.theme.text.main};
+        border-color: ${(props) => props.theme.theme.border};
+        color: ${(props) => props.theme.theme.text.main};
       }
     }
   }
-`
+`;
