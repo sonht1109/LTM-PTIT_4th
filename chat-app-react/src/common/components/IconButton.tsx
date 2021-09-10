@@ -8,15 +8,17 @@ export default function IconButton({
   onClick,
   tooltipTitle,
   tooltipPosition,
+  style
 }: {
   children: any;
   onClick?: () => void;
   tooltipTitle?: string;
   tooltipPosition?: TooltipPlacement;
+  style?: any
 }) {
   return (
     <Tooltip title={tooltipTitle} placement={tooltipPosition}>
-      <SIconButton onClick={onClick}>{children}</SIconButton>
+      <SIconButton {...style} onClick={onClick}>{children}</SIconButton>
     </Tooltip>
   );
 }

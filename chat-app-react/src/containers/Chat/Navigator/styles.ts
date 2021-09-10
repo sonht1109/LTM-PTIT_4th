@@ -9,8 +9,8 @@ export const SNavigator = styled.div`
   border-right: ${(props) => `1px solid ${props.theme.theme.border}`};
   padding: 15px;
   min-height: 500px;
-  overflow: auto;
-  /* background-image: url('/images/chat-bg.png'); */
+  overflow-y: auto;
+  overflow-x: hidden;
   .logo {
     margin-bottom: 20px;
   }

@@ -6,9 +6,10 @@ const theme = {
       main: "white",
       sub: "rgba(0,123,255,.05)",
       dropdown: 'white',
+      chat: "#eaedf2",
       message: {
         send: "#1890ff",
-        receive: "#ebebeb",
+        receive: "white",
       },
       hover: "#f2f0f0",
       icon: "#e6e6e6",
@@ -36,9 +37,10 @@ const theme = {
       main: "#263238",
       sub: "rgba(0,123,255,.05)",
       dropdown: '#455a64',
+      chat: "#263238",
       message: {
         send: "#1890ff",
-        receive: "#293145",
+        receive: "#4c636e",
       },
       input: "#1a2236",
       hover: "#4b505c",
@@ -47,7 +49,7 @@ const theme = {
     text: {
       message: {
         send: "white",
-        receive: "black",
+        receive: "#d3d4d5",
       },
       input: "#495057",
       main: "#d3d4d5",
