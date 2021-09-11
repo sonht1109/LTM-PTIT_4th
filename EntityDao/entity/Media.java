@@ -31,17 +31,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "media")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Media.findAll", query = "SELECT m FROM Media m"),
-    @NamedQuery(name = "Media.findById", query = "SELECT m FROM Media m WHERE m.id = :id"),
-    @NamedQuery(name = "Media.findByCreatedAt", query = "SELECT m FROM Media m WHERE m.createdAt = :createdAt"),
-    @NamedQuery(name = "Media.findByUpdatedAt", query = "SELECT m FROM Media m WHERE m.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Media.findByContentType", query = "SELECT m FROM Media m WHERE m.contentType = :contentType"),
-    @NamedQuery(name = "Media.findByName", query = "SELECT m FROM Media m WHERE m.name = :name"),
-    @NamedQuery(name = "Media.findByUrl", query = "SELECT m FROM Media m WHERE m.url = :url")})
 public class Media implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -65,7 +55,7 @@ public class Media implements Serializable {
     private ChatBox chatboxId;
     @OneToMany(mappedBy = "media")
     private Collection<Message> messageCollection;
-
+}
     public Media() {
     }
 

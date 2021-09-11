@@ -29,16 +29,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "friend")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Friend.findAll", query = "SELECT f FROM Friend f"),
-    @NamedQuery(name = "Friend.findByCreatedAt", query = "SELECT f FROM Friend f WHERE f.createdAt = :createdAt"),
-    @NamedQuery(name = "Friend.findByUpdatedAt", query = "SELECT f FROM Friend f WHERE f.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Friend.findByConfirmed", query = "SELECT f FROM Friend f WHERE f.confirmed = :confirmed"),
-    @NamedQuery(name = "Friend.findByBlockingId", query = "SELECT f FROM Friend f WHERE f.blockingId = :blockingId"),
-    @NamedQuery(name = "Friend.findById", query = "SELECT f FROM Friend f WHERE f.id = :id")})
 public class Friend implements Serializable {
-
 
     @Column(name = "created_at")
     @Temporal(TemporalType.TIMESTAMP)
@@ -61,7 +52,7 @@ public class Friend implements Serializable {
     @JoinColumn(name = "user_id_2", referencedColumnName = "id")
     @ManyToOne(optional = false)
     private User userId2;
-
+}
     public Friend() {
     }
 

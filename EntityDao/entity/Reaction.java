@@ -29,17 +29,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "reaction")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Reaction.findAll", query = "SELECT r FROM Reaction r"),
-    @NamedQuery(name = "Reaction.findById", query = "SELECT r FROM Reaction r WHERE r.id = :id"),
-    @NamedQuery(name = "Reaction.findByCreatedAt", query = "SELECT r FROM Reaction r WHERE r.createdAt = :createdAt"),
-    @NamedQuery(name = "Reaction.findByUpdatedAt", query = "SELECT r FROM Reaction r WHERE r.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Reaction.findByCode", query = "SELECT r FROM Reaction r WHERE r.code = :code"),
-    @NamedQuery(name = "Reaction.findByName", query = "SELECT r FROM Reaction r WHERE r.name = :name")})
 public class Reaction implements Serializable {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -57,7 +47,7 @@ public class Reaction implements Serializable {
     private String name;
     @OneToMany(mappedBy = "reactionId")
     private Collection<MessageDetail> messageDetailCollection;
-
+}
     public Reaction() {
     }
 

@@ -31,8 +31,6 @@ import javax.xml.bind.annotation.XmlTransient;
 @Entity
 @Table(name = "chat_box")
 public class ChatBox implements Serializable {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -55,7 +53,7 @@ public class ChatBox implements Serializable {
     private Collection<Messenger> messengerCollection;
     @OneToMany(mappedBy = "chatboxId")
     private Collection<Media> mediaCollection;
-
+}
     public ChatBox() {
     }
 

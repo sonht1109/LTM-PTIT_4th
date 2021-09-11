@@ -28,15 +28,7 @@ import javax.xml.bind.annotation.XmlRootElement;
  */
 @Entity
 @Table(name = "message_detail")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "MessageDetail.findAll", query = "SELECT m FROM MessageDetail m"),
-    @NamedQuery(name = "MessageDetail.findById", query = "SELECT m FROM MessageDetail m WHERE m.id = :id"),
-    @NamedQuery(name = "MessageDetail.findByCreatedAt", query = "SELECT m FROM MessageDetail m WHERE m.createdAt = :createdAt"),
-    @NamedQuery(name = "MessageDetail.findByUpdatedAt", query = "SELECT m FROM MessageDetail m WHERE m.updatedAt = :updatedAt"),
-    @NamedQuery(name = "MessageDetail.findBySeen", query = "SELECT m FROM MessageDetail m WHERE m.seen = :seen")})
 public class MessageDetail implements Serializable {
-
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -57,7 +49,7 @@ public class MessageDetail implements Serializable {
     @JoinColumn(name = "reaction_id", referencedColumnName = "id")
     @ManyToOne
     private Reaction reactionId;
-
+}
     public MessageDetail() {
     }
 

@@ -32,16 +32,7 @@ import javax.xml.bind.annotation.XmlTransient;
  */
 @Entity
 @Table(name = "message")
-@XmlRootElement
-@NamedQueries({
-    @NamedQuery(name = "Message.findAll", query = "SELECT m FROM Message m"),
-    @NamedQuery(name = "Message.findById", query = "SELECT m FROM Message m WHERE m.id = :id"),
-    @NamedQuery(name = "Message.findByCreatedAt", query = "SELECT m FROM Message m WHERE m.createdAt = :createdAt"),
-    @NamedQuery(name = "Message.findByUpdatedAt", query = "SELECT m FROM Message m WHERE m.updatedAt = :updatedAt"),
-    @NamedQuery(name = "Message.findByContent", query = "SELECT m FROM Message m WHERE m.content = :content")})
 public class Message implements Serializable {
-
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
@@ -74,7 +65,7 @@ public class Message implements Serializable {
     private Messenger messenger;
     @OneToMany(mappedBy = "messageId")
     private Collection<MessageDetail> messageDetailCollection;
-
+}
     public Message() {
     }
 
