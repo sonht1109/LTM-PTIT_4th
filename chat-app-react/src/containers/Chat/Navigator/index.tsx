@@ -10,6 +10,7 @@ import {
 import { Link } from "react-router-dom";
 import { NavigatorContext } from "src/common/context/NavigatorContext";
 import { ETheme } from "src/common/context/ThemeContext";
+import { ToggleSidebarContext } from "src/common/context/ToggleSidebarContext";
 import { ThemeContext } from "styled-components";
 import { menu } from "./store/data";
 import { SNavigator, SHandleButton } from "./styles";
@@ -18,6 +19,7 @@ export default function Navigator() {
   const { theme, themeType, setTheme } = useContext(ThemeContext);
 
   const { index, setIndex } = useContext(NavigatorContext);
+  const { toggleSidebar } = useContext(ToggleSidebarContext);
 
   return (
     <SNavigator>
@@ -27,7 +29,13 @@ export default function Navigator() {
       <div className="list">
         {/* messages */}
         <Tooltip placement="right" title="Messages">
-          <SHandleButton active={index === 0} onClick={() => setIndex(0)}>
+          <SHandleButton
+            active={index === 0}
+            onClick={() => {
+              setIndex(0);
+              toggleSidebar && toggleSidebar(true);
+            }}
+          >
             <FaRegCommentAlt
               size={16}
               color={index === 0 ? theme.icon.active : theme.icon.inactive}
@@ -37,7 +45,13 @@ export default function Navigator() {
 
         {/* friends */}
         <Tooltip placement="right" title="Friends">
-          <SHandleButton active={index === 1} onClick={() => setIndex(1)}>
+          <SHandleButton
+            active={index === 1}
+            onClick={() => {
+              setIndex(1);
+              toggleSidebar && toggleSidebar(true);
+            }}
+          >
             <FaRegUser
               size={16}
               color={index === 1 ? theme.icon.active : theme.icon.inactive}

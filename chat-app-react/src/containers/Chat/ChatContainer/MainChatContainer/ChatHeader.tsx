@@ -6,9 +6,12 @@ import { SChatHeader } from "../styles";
 import { ThemeContext } from "styled-components";
 import React, { useContext } from "react";
 import { Dropdown, Menu } from "antd";
+import { ChatboxInfoContext } from "src/common/context/ChatboxInfoContext";
 
 export default function ChatHeader() {
   const { theme } = useContext(ThemeContext);
+
+  const { handleToggleChatboxInfo } = useContext(ChatboxInfoContext);
 
   return (
     <SChatHeader>
@@ -20,7 +23,11 @@ export default function ChatHeader() {
         <p className="name">Hoang Thai Son</p>
       </div>
       <div className="group-button">
-        <Dropdown overlay={overlay(theme)} placement="bottomRight" trigger={['click']}>
+        <Dropdown
+          overlay={overlay(theme, handleToggleChatboxInfo)}
+          placement="bottomRight"
+          trigger={["click"]}
+        >
           <div>
             <IconButton>
               <FaEllipsisV color={theme.icon.inactive} size={16} />
@@ -32,12 +39,15 @@ export default function ChatHeader() {
   );
 }
 
-const overlay = (theme: any) => {
+const overlay = (
+  theme: any,
+  handleToggleChatboxInfo: React.Dispatch<React.SetStateAction<number>>
+) => {
   return (
     <Menu>
-      <Menu.Item>Info</Menu.Item>
+      <Menu.Item onClick={() => handleToggleChatboxInfo(1)}>Info</Menu.Item>
       <Menu.Divider />
-      <Menu.Item style={{color: theme.badge}}>Leave</Menu.Item>
+      <Menu.Item style={{ color: theme.badge }}>Leave</Menu.Item>
     </Menu>
   );
 };

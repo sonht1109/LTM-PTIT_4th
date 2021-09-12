@@ -1,4 +1,4 @@
-import { Button, Input, Upload } from "antd";
+import { Button, Input } from "antd";
 import React, { useContext, useEffect, useRef, useState } from "react";
 import { FaPaperclip } from "react-icons/fa";
 import { ThemeContext } from "styled-components";

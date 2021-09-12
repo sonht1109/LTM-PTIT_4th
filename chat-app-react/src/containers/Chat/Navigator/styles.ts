@@ -11,13 +11,20 @@ export const SNavigator = styled.div`
   min-height: 500px;
   overflow-y: auto;
   overflow-x: hidden;
+  z-index: 1;
+
+  background-color: ${(props) => props.theme.theme.bg.main};
+
+  @media (max-width: 575px) {
+    padding: 15px 5px;
+  }
+
   .logo {
     margin-bottom: 20px;
   }
   .list {
     flex-grow: 1;
   }
-
 `;
 
 export const SHandleButton = styled.div<{ active: boolean }>`
