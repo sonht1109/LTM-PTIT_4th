@@ -5,6 +5,7 @@ import NavigatorProvider from "./NavigatorContext";
 import CustomThemeProvider from "./ThemeContext";
 import ChatboxInfoProvider from "./ChatboxInfoContext";
 import ToggleSidebarProvider from "./ToggleSidebarContext";
+import ReactsProvider from "./ReactContext";
 
 export default function MyProvider({ children }: { children: ReactNode }) {
   return (
@@ -13,7 +14,9 @@ export default function MyProvider({ children }: { children: ReactNode }) {
         <AuthProvider>
           <NavigatorProvider>
             <ToggleSidebarProvider>
-              <ChatboxInfoProvider>{children}</ChatboxInfoProvider>
+              <ChatboxInfoProvider>
+                <ReactsProvider>{children}</ReactsProvider>
+              </ChatboxInfoProvider>
             </ToggleSidebarProvider>
           </NavigatorProvider>
         </AuthProvider>

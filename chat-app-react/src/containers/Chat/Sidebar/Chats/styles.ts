@@ -15,6 +15,14 @@ export const SInnerSidebar = styled.div`
       line-height: 24px;
       font-weight: 600;
       margin-bottom: 0;
+      & > svg {
+        display: none;
+        @media(max-width: 991px) {
+          display: block;
+          margin-right: 4px;
+          margin-top: 4px;
+        }
+      }
     }
     .icons {
       margin-left: auto;

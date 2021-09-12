@@ -99,12 +99,13 @@ export const SMessage = styled.div<{ fromMe: boolean }>`
       text-align: right;
       margin-bottom: 0;
       margin-top: -4px;
-      & > span {
+      & > span{
         font-size: 10px;
         margin-left: 4px;
       }
     }
     .content {
+      position: relative;
       margin-bottom: 0;
       color: ${(props) =>
         props.fromMe
