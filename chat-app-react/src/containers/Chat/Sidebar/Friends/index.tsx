@@ -1,10 +1,10 @@
 import { Input } from "antd";
 import React, { useContext } from "react";
-import { FaChevronLeft, FaUserPlus } from "react-icons/fa";
-import IconButton from "src/common/components/IconButton";
+import { FaChevronLeft } from "react-icons/fa";
 import { ToggleSidebarContext } from "src/common/context/ToggleSidebarContext";
 import { ThemeContext } from "styled-components";
 import { SInnerSidebar } from "../Chats/styles";
+import AddFriendButton from "./AddFriendButton";
 import FriendList from "./List";
 
 export default function Friends() {
@@ -18,19 +18,17 @@ export default function Friends() {
   return (
     <SInnerSidebar>
       <div className="top">
-        <h3 className="header" onClick={() => toggleSidebar && toggleSidebar(false)}>
+        <h3
+          className="header"
+          onClick={() => toggleSidebar && toggleSidebar(false)}
+        >
           {" "}
-          <FaChevronLeft
-            color={theme.text.main}
-            size={16}
-          />
+          <FaChevronLeft color={theme.text.main} size={16} />
           Friends
         </h3>
 
         <div className="icons">
-          <IconButton tooltipPosition="bottom" tooltipTitle="Add a new friend">
-            <FaUserPlus color={theme.icon.inactive} size={16} />
-          </IconButton>
+          <AddFriendButton theme={theme} />
         </div>
       </div>
 

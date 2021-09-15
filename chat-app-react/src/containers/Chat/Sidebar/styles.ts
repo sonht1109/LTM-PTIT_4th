@@ -15,4 +15,5 @@ export const SSidebar = styled.div<{open: boolean}>`
     height: 100%;
     z-index: 6;
   }
+
 `

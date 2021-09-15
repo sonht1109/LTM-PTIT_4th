@@ -15,6 +15,7 @@ export const SInnerSidebar = styled.div`
       line-height: 24px;
       font-weight: 600;
       margin-bottom: 0;
+      display: flex;
       & > svg {
         display: none;
         @media(max-width: 991px) {
@@ -43,4 +44,5 @@ export const SInnerSidebar = styled.div`
       }
     }
   }
+
 `;
