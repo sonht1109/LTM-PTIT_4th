@@ -1,16 +1,18 @@
-import {
-  SMainChatContainer,
-} from "../styles";
+import ChatboxInfo from "../../ChatboxInfo";
+import { SMainChatContainer } from "../styles";
 import ChatBody from "./ChatBody";
-import ChatFooter from "./ChatFooter";
 import ChatHeader from "./ChatHeader";
+import Reacts from "./Reacts";
 
 export default function MainChatContainer() {
   return (
-    <SMainChatContainer>
-      <ChatHeader />
-      <ChatBody />
-      <ChatFooter />
-    </SMainChatContainer>
+    <>
+      <SMainChatContainer>
+        <ChatHeader />
+        <ChatBody />
+        <ChatboxInfo />
+      </SMainChatContainer>
+      <Reacts />
+    </>
   );
 }

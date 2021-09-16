@@ -18,7 +18,7 @@ export default function IconButton({
 }) {
   return (
     <Tooltip title={tooltipTitle} placement={tooltipPosition}>
-      <SIconButton {...style} onClick={onClick}>{children}</SIconButton>
+      <SIconButton {...{style}} onClick={onClick}>{children}</SIconButton>
     </Tooltip>
   );
 }
