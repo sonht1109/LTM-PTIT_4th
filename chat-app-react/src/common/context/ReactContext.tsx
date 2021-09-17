@@ -1,12 +1,12 @@
 import React, { createContext, ReactNode, useState } from "react";
 
-interface IReactsContenxt {
+interface IReactsContext {
   messageId: number | null;
   setMessageId: React.Dispatch<React.SetStateAction<number | null>>;
 }
 
-export const ReactsContext = createContext<IReactsContenxt>(
-  {} as IReactsContenxt
+export const ReactsContext = createContext<IReactsContext>(
+  {} as IReactsContext
 );
 
 const ReactsProvider = ({ children }: { children: ReactNode }) => {

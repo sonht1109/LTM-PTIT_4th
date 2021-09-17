@@ -5,9 +5,13 @@ import { ThemeContext } from "styled-components";
 import { SChatFooter } from "../styles";
 import { BiSend } from "react-icons/bi";
 import { useRouteMatch } from "react-router";
+import { ReplyingContext } from "src/common/context/ReplyingContext";
+import ReplyingSection from './ReplyingSection'
 
 export default function ChatFooter() {
+
   const { theme } = useContext(ThemeContext);
+  const {replying, setReplying} = useContext(ReplyingContext);
 
   const inputRef = useRef(null);
 
@@ -25,6 +29,10 @@ export default function ChatFooter() {
 
   useEffect(() => {
     reset();
+    if(replying) {
+      setReplying(null);
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [router]);
 
   const onSubmit = () => {
@@ -36,6 +44,8 @@ export default function ChatFooter() {
   };
 
   return (
+    <>
+    <ReplyingSection />
     <SChatFooter
       onSubmit={(e) => {
         e.preventDefault();
@@ -75,5 +85,6 @@ export default function ChatFooter() {
         <BiSend size={16} style={{ minWidth: "16px" }} color="white" />
       </Button>
     </SChatFooter>
+    </>
   );
 }

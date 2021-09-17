@@ -2,6 +2,7 @@ import { Avatar, Dropdown, Menu } from "antd";
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { FaEye, FaRegLaughSquint } from "react-icons/fa";
 import { ReactsContext } from "src/common/context/ReactContext";
+import { ReplyingContext } from "src/common/context/ReplyingContext";
 import { SMessage } from "../styles";
 
 interface IMessage {
@@ -16,9 +17,17 @@ export default function Message({
   isFirst = false,
 }: IMessage) {
   const { setMessageId } = useContext(ReactsContext);
+  const { setReplying } = useContext(ReplyingContext);
+
+  const handleReplying = () => {
+    setReplying(1);
+  }
 
   return (
-    <Dropdown overlay={overlay(setMessageId)} trigger={["contextMenu"]}>
+    <Dropdown
+      overlay={overlay(setMessageId, handleReplying)}
+      trigger={["contextMenu"]}
+    >
       <SMessage
         fromMe={fromMe}
         className={`${isFirst ? "is_first" : ""} ${isLast ? "is_last" : ""}`}
@@ -39,14 +48,20 @@ export default function Message({
   );
 }
 
-const overlay = (setMessageId: Dispatch<SetStateAction<number | null>>) => {
+const overlay = (
+  setMessageId: Dispatch<SetStateAction<number | null>>,
+  handleReplying: () => void,
+) => {
   return (
     <Menu>
-      <Menu.Item key={1}>Reply</Menu.Item>
+      <Menu.Item key={1} onClick={handleReplying}>Reply</Menu.Item>
       <Menu.Divider />
-      <Menu.Item key={2} onClick={() => {
-        setMessageId(Math.random())
-      }}>
+      <Menu.Item
+        key={2}
+        onClick={() => {
+          setMessageId(Math.random());
+        }}
+      >
         <FaRegLaughSquint size={14} />
       </Menu.Item>
     </Menu>

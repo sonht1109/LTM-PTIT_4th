@@ -6,6 +6,7 @@ export const SNavigator = styled.div`
   flex-direction: column;
   align-items: center;
   width: 80px;
+  min-width: 80px;
   border-right: ${(props) => `1px solid ${props.theme.theme.border}`};
   padding: 15px;
   min-height: 500px;

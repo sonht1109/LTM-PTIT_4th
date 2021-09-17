@@ -1,4 +1,8 @@
-import { mixinsFlexCenter, mixinsScrollBar } from "src/common/styles/mixins";
+import {
+  mixinsFlexCenter,
+  mixinsScrollBar,
+  mixinTextOverflow,
+} from "src/common/styles/mixins";
 import styled, { css } from "styled-components";
 
 export const SChatContainer = styled.div`
@@ -41,6 +45,7 @@ export const SChatBody = styled.div`
   background-image: url("/images/chat-bg.png");
   background-color: ${(props) => props.theme.theme.bg.chat};
   background-repeat: no-repeat;
+  background-position: center;
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
@@ -99,7 +104,7 @@ export const SMessage = styled.div<{ fromMe: boolean }>`
       text-align: right;
       margin-bottom: 0;
       margin-top: -4px;
-      & > span{
+      & > span {
         font-size: 10px;
         margin-left: 4px;
       }
@@ -151,5 +156,38 @@ export const SChatFooter = styled.form`
   .upload {
     background-color: ${(props) => props.theme.theme.bg.hover};
     border: none;
+  }
+`;
+
+export const SReplying = styled.div`
+  padding: 10px 40px;
+  position: relative;
+  border-left: 4px solid ${(props) => props.theme.theme.logo};
+  display: flex;
+  align-items: center;
+  max-width: 100%;
+
+  .icon {
+    position: absolute;
+    &.reply {
+      left: 10px;
+    }
+    &.close {
+      right: 10px;
+    }
+  }
+
+  .detail {
+    flex-grow: 1;
+    .name {
+      font-weight: 600;
+      font-size: 12px;
+      color: ${(props) => props.theme.theme.logo};
+    }
+    .content {
+      color: ${(props) => props.theme.theme.text.main};
+      font-size: 12px;
+      ${mixinTextOverflow(1)};
+    }
   }
 `;
