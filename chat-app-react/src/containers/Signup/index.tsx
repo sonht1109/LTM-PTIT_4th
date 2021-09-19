@@ -77,7 +77,9 @@ export default function Signup() {
           </Form.Item>
 
           <Divider plain>
-            or <Link to="/login">Login</Link>
+            or <Link to="/login">
+              <span style={{fontWeight: 600}}>Login</span>
+            </Link>
           </Divider>
         </Form>
       </div>
