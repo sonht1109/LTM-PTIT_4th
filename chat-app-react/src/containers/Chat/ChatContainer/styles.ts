@@ -26,7 +26,7 @@ export const SChatHeader = styled.div`
   .avt {
     position: relative;
     margin-right: 15px;
-    @media(max-width: 991px) {
+    @media (max-width: 991px) {
       display: none;
     }
   }
@@ -55,16 +55,36 @@ export const SChatBody = styled.div`
   overflow-y: auto;
   padding: 15px;
 
+  .scroll-button {
+    position: fixed;
+    bottom: -30px;
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+    left: calc(50% - 15px);
+    z-index: 10;
+    background-color: ${(props) => props.theme.theme.logo};
+    cursor: pointer;
+    padding-top: 7px;
+    text-align: center;
+    box-shadow: 0px 3px 5px rgba(0, 0, 0, 0.3);
+    transition: 0.2s;
+    &.show {
+      bottom: 80px;
+    }
+  }
+
   .ant-divider-horizontal {
-    &:after, &:before {
+    &:after,
+    &:before {
       border: none;
     }
   }
 
   .ant-divider-inner-text {
-    border-color: ${props => props.theme.theme.border};
-    color: ${props => props.theme.theme.text.sub};
-    background-color: ${props => props.theme.theme.bg.main};
+    border-color: ${(props) => props.theme.theme.border};
+    color: ${(props) => props.theme.theme.text.sub};
+    background-color: ${(props) => props.theme.theme.bg.main};
     font-size: 12px;
     border-radius: 4px;
   }
@@ -72,7 +92,6 @@ export const SChatBody = styled.div`
   @media (max-width: 575px) {
     padding: 15px 5px;
   }
-
 
   ${(props) =>
     mixinsScrollBar(
