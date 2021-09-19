@@ -1,4 +1,4 @@
-import { Avatar, Dropdown, Menu } from "antd";
+import { Avatar, Divider, Dropdown, Menu } from "antd";
 import React, { Dispatch, SetStateAction, useContext } from "react";
 import { FaEye, FaRegLaughSquint } from "react-icons/fa";
 import { ReactsContext } from "src/common/context/ReactContext";
@@ -24,6 +24,7 @@ export default function Message({
   }
 
   return (
+    <>
     <Dropdown
       overlay={overlay(setMessageId, handleReplying)}
       trigger={["contextMenu"]}
@@ -45,6 +46,10 @@ export default function Message({
         </div>
       </SMessage>
     </Dropdown>
+    {
+      isFirst && <Divider>18/09/2021</Divider>
+    }
+    </>
   );
 }
 

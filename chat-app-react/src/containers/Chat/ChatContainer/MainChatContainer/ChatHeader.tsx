@@ -20,7 +20,7 @@ export default function ChatHeader() {
         <StatusDot />
       </div>
       <div className="detail">
-        <p className="name">Hoang Thai Son</p>
+        <span className="name">Hoang Thai Son</span>
       </div>
       <div className="group-button">
         <Dropdown

@@ -25,9 +25,12 @@ export const SChatHeader = styled.div`
   width: 100%;
   .avt {
     position: relative;
+    margin-right: 15px;
+    @media(max-width: 991px) {
+      display: none;
+    }
   }
   .detail {
-    margin-left: 15px;
     flex-grow: 1;
     .name {
       color: ${(props) => props.theme.theme.text.main};
@@ -46,10 +49,31 @@ export const SChatBody = styled.div`
   background-color: ${(props) => props.theme.theme.bg.chat};
   background-repeat: no-repeat;
   background-position: center;
+  background-size: cover;
   display: flex;
   flex-direction: column-reverse;
   overflow-y: auto;
   padding: 15px;
+
+  .ant-divider-horizontal {
+    &:after, &:before {
+      border: none;
+    }
+  }
+
+  .ant-divider-inner-text {
+    border-color: ${props => props.theme.theme.border};
+    color: ${props => props.theme.theme.text.sub};
+    background-color: ${props => props.theme.theme.bg.main};
+    font-size: 12px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 575px) {
+    padding: 15px 5px;
+  }
+
+
   ${(props) =>
     mixinsScrollBar(
       "3px",

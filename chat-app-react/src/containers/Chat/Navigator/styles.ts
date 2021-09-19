@@ -16,7 +16,13 @@ export const SNavigator = styled.div`
 
   background-color: ${(props) => props.theme.theme.bg.main};
 
+  @media(max-width: 991px) {
+    border: none;
+  }
+
   @media (max-width: 575px) {
+    width: 50px;
+    min-width: 60px;
     padding: 15px 5px;
   }
 

@@ -11,12 +11,12 @@ export const SOnboarding = styled.div`
   overflow: hidden;
   flex-direction: column;
   & > p {
-    font-weight: 500;
+    font-weight: 700;
     display: flex;
     align-items: center;
     margin-top: 20px;
-    font-size: 20px;
+    font-size: 24px;
     margin-bottom: 30px;
-    color: ${props => props.theme.theme.text.main};
+    color: #828282;
   }
 `
