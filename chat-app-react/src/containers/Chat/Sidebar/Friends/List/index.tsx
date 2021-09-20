@@ -5,9 +5,9 @@ import FriendItem from './FriendItem'
 export default function FriendList() {
   return (
     <SList>
-      {Children.toArray([1, 2, 3, 4, 5, 6, 7, 8]).map(() => (
+      {/* {Children.toArray([1, 2, 3, 4, 5, 6, 7, 8]).map(() => (
         <FriendItem />
-      ))}
+      ))} */}
     </SList>
   )
 }

@@ -10,6 +10,7 @@ import MyProvider from "./common/context";
 import "./app.css";
 import "antd/dist/antd.css";
 import Profile from "./containers/Chat/Profile";
+import ProtectedRoute from "./common/components/ProtectedRoute";
 
 export default function App() {
   return (
@@ -19,21 +20,26 @@ export default function App() {
           <Route path="/" exact>
             <Onboarding />
           </Route>
-          <Route path="/c" exact>
-            <Chat />
-          </Route>
-          <Route path="/c/:id" exact>
-            <Chat />
-          </Route>
+
           <Route path="/signup" exact>
             <Signup />
           </Route>
+
           <Route path="/login" exact>
             <Login />
           </Route>
-          <Route path="/profile" exact>
+
+          <ProtectedRoute path="/profile" exact>
             <Profile />
-          </Route>
+          </ProtectedRoute>
+
+          <ProtectedRoute path="/c">
+            <Chat />
+          </ProtectedRoute>
+
+          <ProtectedRoute path="/c/:id" exact>
+            <Chat />
+          </ProtectedRoute>
         </Switch>
       </Router>
       <GlobalLoadingScreen />

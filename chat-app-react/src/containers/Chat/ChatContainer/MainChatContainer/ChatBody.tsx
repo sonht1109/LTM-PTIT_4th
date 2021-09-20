@@ -1,9 +1,9 @@
-import { Divider } from "antd";
+// import { Divider } from "antd";
 import { useEffect, useRef } from "react";
 import { FaArrowDown } from "react-icons/fa";
 import { SChatBody } from "../styles";
 import ChatFooter from "./ChatFooter";
-import Message from "./Message";
+// import Message from "./Message";
 
 export default function ChatBody() {
   const bodyRef = useRef(null);
@@ -48,7 +48,7 @@ export default function ChatBody() {
     <>
       <SChatBody ref={bodyRef}>
         <div className="top"></div>
-
+{/* 
         <Message fromMe={true} />
 
         <Message isLast />
@@ -67,7 +67,7 @@ export default function ChatBody() {
         <Message />
         <Message />
         <Message isFirst />
-        <Divider>18/09/2021</Divider>
+        <Divider>18/09/2021</Divider> */}
 
         <div className="bottom"></div>
         <div

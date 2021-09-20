@@ -1,14 +1,37 @@
 import React from "react";
 import { SLogin } from "./styles";
 import { FaRocket } from "react-icons/fa";
-import { Button, Divider, Form, Input } from "antd";
+import { Button, Divider, Form, Input, message } from "antd";
 import Title from "antd/lib/typography/Title";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { SLogo } from "../Signup/styles";
+import { request } from "src/common/api/axios";
+import { handleError } from "src/common/ultis";
 
 export default function Login() {
+
+  const history = useHistory();
+  
   const onFinish = (values: any) => {
-    console.log("Success:", values);
+    request({
+      method: "POST",
+      url: "login",
+      data: {
+        username: values.username,
+        password: values.password,
+      },
+    })
+      .then((data: any) => {
+        if (data?.data.code === "200") {
+          localStorage.setItem("token", data.data.body.split("CHAT_APP ")[1]);
+          history.push("/c");
+        } else {
+          message.error(data?.data.message);
+        }
+      })
+      .catch((err) => {
+        handleError(err);
+      });
   };
 
   const onFinishFailed = (errorInfo: any) => {
