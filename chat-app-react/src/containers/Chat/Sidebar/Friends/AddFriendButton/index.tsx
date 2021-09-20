@@ -1,18 +1,34 @@
 import { Button, Input, Modal } from "antd";
 import React, { useState } from "react";
 import { FaUserPlus } from "react-icons/fa";
+import { requestToken } from "src/common/api/axios";
 import IconButton from "src/common/components/IconButton";
+import { handleError } from "src/common/ultis";
+import { IUser } from "src/common/ultis/types";
 import FriendResultList from './FriendResultList'
 
 export default function AddFriendButton({ theme }: { theme: any }) {
+
   const [openModal, toggleModal] = useState(false);
+  const [users, setUsers] = useState<IUser[]>([])
 
   const handleCancel = () => {
     toggleModal(false)
   }
 
-  const onSearch = (data: any) => {
-    console.log(data);
+  const onSearch = (data: string) => {
+    requestToken({method: "GET", url: "api/list-user", params: {
+      username: data
+    }})
+    .then(data => {
+      if(data?.data?.body) {
+        const res = data.data.body;
+        setUsers([...res]);
+      }
+    })
+    .catch(err => {
+      handleError(err)
+    })
   };
 
   return (
@@ -39,7 +55,7 @@ export default function AddFriendButton({ theme }: { theme: any }) {
           enterButton
           onSearch={onSearch}
         />
-        <FriendResultList />
+        <FriendResultList users={users} />
       </Modal>
     </>
   );

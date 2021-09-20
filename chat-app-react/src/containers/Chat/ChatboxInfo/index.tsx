@@ -14,7 +14,7 @@ export default function ChatboxInfo() {
     useContext(ChatboxInfoContext);
 
   useEffect(() => {
-    console.log(chatboxInfo);
+
   }, [chatboxInfo]);
 
   return (
@@ -37,8 +37,8 @@ export default function ChatboxInfo() {
               className="custom-panel"
               header="Member (30)"
             >
-              <div> Custom panel</div>
-              <div> Custom panel</div>
+              <div>Custom panel</div>
+              <div>Custom panel</div>
             </Collapse.Panel>
           </Collapse>
         </div>

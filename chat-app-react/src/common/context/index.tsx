@@ -12,17 +12,17 @@ export default function MyProvider({ children }: { children: ReactNode }) {
   return (
     <CustomThemeProvider>
       <GLProvider>
-        <AuthProvider>
-          <NavigatorProvider>
-            <ToggleSidebarProvider>
-              <ChatboxInfoProvider>
-                <ReactsProvider>
-                  <ReplyingProvider>{children}</ReplyingProvider>
-                </ReactsProvider>
-              </ChatboxInfoProvider>
-            </ToggleSidebarProvider>
-          </NavigatorProvider>
-        </AuthProvider>
+        <NavigatorProvider>
+          <ToggleSidebarProvider>
+            <ChatboxInfoProvider>
+              <ReactsProvider>
+                <ReplyingProvider>
+                  <AuthProvider>{children}</AuthProvider>
+                </ReplyingProvider>
+              </ReactsProvider>
+            </ChatboxInfoProvider>
+          </ToggleSidebarProvider>
+        </NavigatorProvider>
       </GLProvider>
     </CustomThemeProvider>
   );
