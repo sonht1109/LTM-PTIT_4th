@@ -50,13 +50,17 @@ public class FriendService implements FriendServiceInterface{
 
     @Override
     public List<FriendEntity> getListFriend(String username) {
-        List<FriendEntity> friendEntityList = friendRepository.findAllByUsernameFriend(username);
+        MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<FriendEntity> friendEntityList = friendRepository.findAllByUsernameFriend(user.getUserEntity().getId(), username);
         return friendEntityList;
     }
 
     @Override
     public List<FriendEntity> getListRequest(String username) {
-        List<FriendEntity> friendEntityList = friendRepository.findAllByUsernameFriendRequest(username);
+        MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+
+        List<FriendEntity> friendEntityList = friendRepository.findAllByUsernameFriendRequest(user.getUserEntity().getId(), username);
         return friendEntityList;
     }
 }
