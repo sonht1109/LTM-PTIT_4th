@@ -12,4 +12,7 @@ public interface FriendRepository extends JpaRepository<FriendEntity, Long> {
 
    @Query(value = "select friend from FriendEntity friend where friend.user_id_2.username like %:username% and friend.confirmed=true")
    List<FriendEntity> findAllByUsernameFriend(String username);
+
+   @Query(value = "select friend from FriendEntity friend where friend.user_id_2.username like %:username% and friend.confirmed=false")
+   List<FriendEntity> findAllByUsernameFriendRequest(String username);
 }

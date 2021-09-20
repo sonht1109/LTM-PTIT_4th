@@ -62,4 +62,11 @@ public class FriendController {
         List<FriendEntity> friendEntityList = friendService.getListFriend(username);
         return BaseResponse.builder().code("200").message("Thành công.").body(friendEntityList).build();
     }
+
+    // get list user request
+    @GetMapping("/list-request")
+    public BaseResponse<Object> getListRequest(@RequestParam(required = false, defaultValue = "") String username){
+        List<FriendEntity> friendEntityList = friendService.getListRequest(username);
+        return BaseResponse.builder().code("200").message("Thành công.").body(friendEntityList).build();
+    }
 }
