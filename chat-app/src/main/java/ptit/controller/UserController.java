@@ -24,21 +24,11 @@ public class UserController {
         return ResponseEntity.ok(user.getUserEntity());
     }
 
+    // get list user
     @GetMapping("/list-user")
     public BaseResponse<Object> getListUser(@RequestParam(required = false, defaultValue = "") String username){
         List<UserEntity> userEntityList = userService.findAllByUsername(username);
         return BaseResponse.builder().code("200").message("Thành công.").body(userEntityList).build();
     }
 
-    @PostMapping("/add-friend")
-    public BaseResponse<Object> addFriend(@RequestBody UserAddFriendDto userAddFriendDto){
-        MyUserDetails currentUser = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        UserEntity friendUser = userService.findOne(userAddFriendDto.getFriend_id());
-
-        if(friendUser == null && friendUser.getId() == currentUser.getUserEntity().getId()){
-            return BaseResponse.builder().code("400").message("Friend Id không hợp lệ.").build();
-        }
-
-        return BaseResponse.builder().code("200").message("Gưi lời mời kết bạn thành công.").build();
-    }
 }

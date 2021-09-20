@@ -41,4 +41,16 @@ public class FriendEntity {
     @ManyToOne(optional = false)
     private UserEntity user_id_2;
 
+    @Override
+    public String toString() {
+        return "FriendEntity{" +
+                "id=" + id +
+                ", created_at=" + created_at +
+                ", updated_at=" + updated_at +
+                ", confirmed=" + confirmed +
+                ", blocking_id=" + blocking_id +
+                ", user_id_1=" + user_id_1 +
+                ", user_id_2=" + user_id_2 +
+                '}';
+    }
 }

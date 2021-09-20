@@ -2,18 +2,15 @@ package ptit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.SimpleGrantedAuthority;
-import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import ptit.base.MyUserDetails;
 import ptit.entity.UserEntity;
 import ptit.repository.UserRepository;
-import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @Service
 public class UserService implements UserServiceInterface {
@@ -39,6 +36,11 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public UserEntity findByUsername(String username) {
+        return userRepository.findByUsername(username);
+    }
+
+    @Override
     public List<UserEntity> findAllByUsername(String username) {
         List<UserEntity> list = userRepository.findAllByUsername(username);
         return list;
@@ -51,7 +53,6 @@ public class UserService implements UserServiceInterface {
         if (user == null)
             throw new UsernameNotFoundException("Not found username : " + username);
         List<GrantedAuthority> authorities = new ArrayList<>();
-        //user.getRoles().forEach(role -> authorities.add(new SimpleGrantedAuthority("ROLE_" + role.getCode())));
         return new MyUserDetails(user.getUsername(), user.getPassword(), true, true, true, true, authorities, user);
     }
 }

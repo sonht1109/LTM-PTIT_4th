@@ -58,8 +58,8 @@ public class UserEntity {
     @Column(name = "online")
     private Boolean online;
 
-    public UserEntity(String email, String password1) {
-        this.email = email;
+    public UserEntity(String username, String password1) {
+        this.username = username;
         this.password = password1;
     }
 

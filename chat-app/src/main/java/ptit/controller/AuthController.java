@@ -30,16 +30,16 @@ public class AuthController {
 
     @PostMapping("/login")
     public BaseResponse<Object> login(@RequestBody AuthLoginDto login) {
-        UserEntity user = userService.findByEmail(login.getEmail());
+        UserEntity user = userService.findByUsername(login.getUsername());
 
         if(user != null){
             try {
-                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getEmail(), login.getPassword()));
+                authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(login.getUsername(), login.getPassword()));
             }
             catch (BadCredentialsException e) {
-                throw new BadCredentialsException("Invalid username " + login.getEmail());
+                throw new BadCredentialsException("Invalid username " + login.getUsername());
             }
-            MyUserDetails myUserDetails = (MyUserDetails) userService.loadUserByUsername(login.getEmail());
+            MyUserDetails myUserDetails = (MyUserDetails) userService.loadUserByUsername(login.getUsername());
             String jwt = JwtUtils.generateToken(myUserDetails);
             return BaseResponse.builder().message("Đăng nhập thành công.").code("200").body(jwt).build();
         }
@@ -54,13 +54,15 @@ public class AuthController {
             return BaseResponse.builder().message("Mật khẩu không khớp.").code("400").body(null).build();
         }
 
-        // check email exist
-        if(userService.findByEmail(signup.getEmail()) != null){
-            return BaseResponse.builder().message("Email đã tồn tại.").code("400").body(null).build();
+        // check username exist
+        UserEntity checkExist = userService.findByUsername(signup.getUsername());
+
+        if(checkExist != null){
+            return BaseResponse.builder().message("Username đã tồn tại.").code("400").body(null).build();
         }
 
-        UserEntity newUser = new UserEntity(signup.getEmail(), signup.getPassword1());
-        newUser.setUsername(signup.getEmail());
+        UserEntity newUser = new UserEntity();
+        newUser.setUsername(signup.getUsername());
         newUser.setPassword(bCryptPasswordEncoder.encode(signup.getPassword1()));
         UserEntity res = userService.addUser(newUser);
 
