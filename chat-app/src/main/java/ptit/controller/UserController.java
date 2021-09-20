@@ -1,22 +1,34 @@
 package ptit.controller;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.web.bind.annotation.*;
+import ptit.base.BaseResponse;
+import ptit.base.MyUserDetails;
+import ptit.dto.UserAddFriendDto;
+import ptit.entity.UserEntity;
+import ptit.service.UserService;
+
+import java.util.List;
 
 @RestController
-@RequestMapping("/api/user")
+@RequestMapping("/api")
 public class UserController {
+    @Autowired
+    UserService userService;
 
-    @GetMapping
-    public String test() {
-        System.out.println("get");
-        return "Hello world";
+    @GetMapping("/user")
+    public ResponseEntity<Object> getCurrentUser() {
+        MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return ResponseEntity.ok(user.getUserEntity());
     }
 
-    @GetMapping("/abc")
-    public String abc() {
-        System.out.println("get abc");
-        return "Hello world";
+    // get list user
+    @GetMapping("/list-user")
+    public BaseResponse<Object> getListUser(@RequestParam(required = false, defaultValue = "") String username){
+        List<UserEntity> userEntityList = userService.findAllByUsername(username);
+        return BaseResponse.builder().code("200").message("Thành công.").body(userEntityList).build();
     }
+
 }
