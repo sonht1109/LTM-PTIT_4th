@@ -12,4 +12,5 @@ public interface UserServiceInterface extends UserDetailsService {
     public UserEntity findByEmail(String email);
     public UserEntity findByUsername(String username);
     public List<UserEntity> findAllByUsername(String username);
+    public UserEntity setOnline(Long id);
 }

@@ -47,6 +47,16 @@ public class UserService implements UserServiceInterface {
     }
 
     @Override
+    public UserEntity setOnline(Long id) {
+        UserEntity user = userRepository.findById(id).orElse(null);
+        if(user != null){
+            user.setOnline(true);
+            return userRepository.save(user);
+        }
+        return null;
+    }
+
+    @Override
     @Transactional
     public MyUserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         UserEntity user = userRepository.findByUsername(username);

@@ -1,7 +1,9 @@
 package ptit.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
+import ptit.base.MyUserDetails;
 import ptit.entity.FriendEntity;
 import ptit.entity.UserEntity;
 import ptit.repository.FriendRepository;
@@ -31,19 +33,26 @@ public class FriendService implements FriendServiceInterface{
     }
 
     @Override
-    public FriendEntity confirmFriend(Long friend_id) {
+    public FriendEntity confirmFriend(Long friend_id, Boolean status) {
         FriendEntity friendEntity = friendRepository.findById(friend_id).orElse(null);
-        // System.out.println(friendEntity.toString()+"  <<<<<<<<<");
-        if(friendEntity != null){
-            friendEntity.setConfirmed(true);
-            return friendRepository.save(friendEntity);
-        }
 
+        if(friendEntity != null){
+            if(status){
+                friendEntity.setConfirmed(true);
+                return friendRepository.save(friendEntity);
+            }else {
+                friendRepository.delete(friendEntity);
+            }
+
+        }
         return null;
     }
 
     @Override
     public List<FriendEntity> getListFriend(String username) {
-        return null;
+        MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        List<FriendEntity> friendEntityList = friendRepository.findAllByUsernameFriend(username);
+        return friendEntityList;
     }
+
 }

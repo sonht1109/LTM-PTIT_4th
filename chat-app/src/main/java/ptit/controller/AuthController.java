@@ -40,6 +40,9 @@ public class AuthController {
                 throw new BadCredentialsException("Invalid username " + login.getUsername());
             }
             MyUserDetails myUserDetails = (MyUserDetails) userService.loadUserByUsername(login.getUsername());
+            // set online is true
+            userService.setOnline(myUserDetails.getUserEntity().getId());
+
             String jwt = JwtUtils.generateToken(myUserDetails);
             return BaseResponse.builder().message("Đăng nhập thành công.").code("200").body(jwt).build();
         }
