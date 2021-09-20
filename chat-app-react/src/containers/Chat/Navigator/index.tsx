@@ -7,7 +7,7 @@ import {
   FaRegUser,
   FaRocket,
 } from "react-icons/fa";
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import { NavigatorContext } from "src/common/context/NavigatorContext";
 import { ETheme } from "src/common/context/ThemeContext";
 import { ToggleSidebarContext } from "src/common/context/ToggleSidebarContext";
@@ -20,6 +20,12 @@ export default function Navigator() {
 
   const { index, setIndex } = useContext(NavigatorContext);
   const { toggleSidebar } = useContext(ToggleSidebarContext);
+
+  const history = useHistory();
+  const handleLogout = () => {
+    localStorage.removeItem('token');
+    history.replace('/login')
+  }
 
   return (
     <SNavigator>
@@ -76,7 +82,7 @@ export default function Navigator() {
 
       <Dropdown
         placement="topRight"
-        overlay={overlay(theme)}
+        overlay={overlay(theme, handleLogout)}
         trigger={["click"]}
       >
         <Avatar
@@ -89,7 +95,8 @@ export default function Navigator() {
   );
 }
 
-const overlay = (theme: any) => {
+const overlay = (theme: any, handleLogout: () => void) => {
+  
   return (
     <Menu>
       {menu.map((m: any, i: number) => (
@@ -102,6 +109,7 @@ const overlay = (theme: any) => {
         style={{ color: theme.badge }}
         className="dropdown_item logout"
         key={menu.length}
+        onClick={handleLogout}
       >
         Log out
       </Menu.Item>
