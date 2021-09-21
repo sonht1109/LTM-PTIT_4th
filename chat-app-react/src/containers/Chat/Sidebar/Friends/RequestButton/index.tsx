@@ -16,18 +16,16 @@ export default function RequestButton({ theme }: { theme: any }) {
   };
 
   useEffect(() => {
-    if (openModal) {
-      requestToken({ method: "GET", url: "api/list-request" })
-        .then((data) => {
-          if (data.data?.body) {
-            setRequests([...data.data.body]);
-          }
-        })
-        .catch((err) => {
-          handleError(err);
-        });
-    }
-  }, [openModal]);
+    requestToken({ method: "GET", url: "api/list-request" })
+      .then((data) => {
+        if (data.data?.body) {
+          setRequests([...data.data.body]);
+        }
+      })
+      .catch((err) => {
+        handleError(err);
+      });
+  }, []);
 
   return (
     <>

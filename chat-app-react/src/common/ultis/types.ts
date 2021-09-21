@@ -11,6 +11,5 @@ export interface IFriend {
   blocking_id?: string;
   confirmed?: boolean;
   id: number;
-  user_id_1: IUser;
-  user_id_2: IUser;
+  friend: IUser;
 }

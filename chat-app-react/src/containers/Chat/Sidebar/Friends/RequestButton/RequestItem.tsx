@@ -31,26 +31,15 @@ export default function RequestItem({ request }: { request: IFriend }) {
 
   return (
     <SResultItem>
-      <Avatar
-        src={avatarSrc(request?.user_id_1.avatar || "")}
-        className="avt"
-      />
+      <Avatar src={avatarSrc(request?.friend.avatar || "")} className="avt" />
       <div className="detail">
-        <p className="name">@{request?.user_id_1.username}</p>
+        <p className="name">@{request?.friend.username}</p>
         <div className="group-icon">
-          <div className="icon">
-            <FaUserCheck
-              size={12}
-              color="#1890ff"
-              onClick={() => handleRequest(true)}
-            />
+          <div className="icon" onClick={() => handleRequest(true)}>
+            <FaUserCheck size={12} color="#1890ff" />
           </div>
-          <div className="icon">
-            <FaTimes
-              size={12}
-              color={theme.badge}
-              onClick={() => handleRequest(false)}
-            />
+          <div className="icon" onClick={() => handleRequest(false)}>
+            <FaTimes size={12} color={theme.badge} />
           </div>
         </div>
       </div>
