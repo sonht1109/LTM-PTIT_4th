@@ -64,8 +64,8 @@ public class FriendController {
         List<FriendEntity> friendEntityList = friendService.getListFriend(username);
         MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
+        // convert data
         ArrayList<FriendListDto> res = new ArrayList<>();
-
         friendEntityList.forEach(friendEntity -> {
             FriendListDto friendListDto = new FriendListDto();
 
@@ -90,6 +90,27 @@ public class FriendController {
     @GetMapping("/list-request")
     public BaseResponse<Object> getListRequest(@RequestParam(required = false, defaultValue = "") String username){
         List<FriendEntity> friendEntityList = friendService.getListRequest(username);
-        return BaseResponse.builder().code("200").message("Thành công.").body(friendEntityList).build();
+
+        // convert data
+        MyUserDetails user = (MyUserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        ArrayList<FriendListDto> res = new ArrayList<>();
+        friendEntityList.forEach(friendEntity -> {
+            FriendListDto friendListDto = new FriendListDto();
+
+            friendListDto.setId(friendEntity.getId());
+            friendListDto.setBlocking_id(friendEntity.getBlocking_id());
+            friendListDto.setConfirmed(friendEntity.getConfirmed());
+            friendListDto.setCreated_at(friendEntity.getCreated_at());
+            friendListDto.setUpdated_at(friendEntity.getUpdated_at());
+
+            if(user.getUserEntity().getId() == friendEntity.getUser_id_1().getId()){
+                friendListDto.setFriend(friendEntity.getUser_id_2());
+            }else {
+                friendListDto.setFriend(friendEntity.getUser_id_1());
+            }
+            res.add(friendListDto);
+        });
+
+        return BaseResponse.builder().code("200").message("Thành công.").body(res).build();
     }
 }
