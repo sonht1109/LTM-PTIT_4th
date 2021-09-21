@@ -16,6 +16,15 @@ export default function Friends() {
 
   const onSearch = (value: any) => {
     console.log(value);
+    requestToken({method: "GET", url: `api/list-friend?username=${value}`, })
+    .then(data => {
+      if(data.data?.body) {
+        setFriends([...data.data.body]);
+      }
+    })
+    .catch(err => {
+      handleError(err)
+    })
   };
 
   const [friends, setFriends] = useState<IFriend[]>([])

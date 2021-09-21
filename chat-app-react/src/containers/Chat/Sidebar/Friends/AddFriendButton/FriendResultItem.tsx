@@ -1,6 +1,6 @@
 import { Avatar, message } from 'antd';
-import React, { useContext } from 'react'
-import { FaCheck, FaUserPlus } from 'react-icons/fa';
+import { useContext } from 'react'
+import { FaUserPlus } from 'react-icons/fa';
 import { requestToken } from 'src/common/api/axios';
 import { avatarSrc, handleError } from 'src/common/ultis';
 import { IUser } from 'src/common/ultis/types';
@@ -9,6 +9,7 @@ import { SResultItem } from './styles';
 
 export default function ResultItem({user}: {user: IUser}) {
   
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   const {theme} = useContext(ThemeContext)
 
   const handleAddFriend = () => {

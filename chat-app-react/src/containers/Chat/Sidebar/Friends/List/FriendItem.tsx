@@ -15,9 +15,9 @@ export default function FriendItem({friend}: {friend: IFriend}) {
 
   return (
     <SFriendItem>
-      <Avatar src={avatarSrc(friend?.friend.avatar || "")} className="avt" />
+      <Avatar src={avatarSrc(friend?.friend?.avatar || "")} className="avt" />
       <div className="detail">
-        <p className="name">@{friend?.friend.username}</p>
+        <p className="name">@{friend?.friend?.username}</p>
         <div className="group-icon">
           <Link to={`/c/${friend?.id}`}>
             <div className="icon" onClick={() => setIndex(0)}>

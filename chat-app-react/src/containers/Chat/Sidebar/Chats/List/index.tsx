@@ -1,6 +1,5 @@
-import React, { Children } from "react";
+import React from "react";
 import NoData from "src/common/components/NoData";
-import ChatItem from "./ChatItem";
 import { SList } from "./styles";
 
 export default function ChatList() {
