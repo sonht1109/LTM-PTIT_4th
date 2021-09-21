@@ -3,19 +3,21 @@ import React, { useContext } from "react";
 import { FaBan, FaRegCommentAlt } from "react-icons/fa";
 import { Link } from "react-router-dom";
 import { NavigatorContext } from "src/common/context/NavigatorContext";
+import { avatarSrc } from "src/common/ultis";
+import { IFriend } from "src/common/ultis/types";
 import { ThemeContext } from "styled-components";
 import { SFriendItem } from "./styles";
 
-export default function FriendItem() {
+export default function FriendItem({friend}: {friend: IFriend}) {
   const { theme } = useContext(ThemeContext);
 
   const {setIndex} = useContext(NavigatorContext)
 
   return (
     <SFriendItem>
-      <Avatar src="/images/avt-placeholder.png" className="avt" />
+      <Avatar src={avatarSrc(friend?.user_id_1.avatar || "")} className="avt" />
       <div className="detail">
-        <p className="name">Hoang Thai Son</p>
+        <p className="name">@{friend?.user_id_1.username}</p>
         <div className="group-icon">
           <Link to="/c/2">
             <div className="icon" onClick={() => setIndex(0)}>
